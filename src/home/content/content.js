@@ -1,26 +1,55 @@
 import React from 'react'
 import content from './content.css'
-class Content extends React.Component{
-    render(){
-        return(
-            <div>
+import axios from 'axios'
+import { METHODS } from 'http';
+class Content extends React.Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+            item: []
+        }
+    }
+    componentDidMount() {
+        var _this = this
+        axios.get("http://p6acqdvet.bkt.clouddn.com/data.json").then(function (res) {
+            console.log(res)
+            _this.setState({
+                item: res.data.data
+            })
+        })
+    }
+
+    render() {
+        return (
+            <div className='C'>
                 <div className='content'>
+                    <p className='content_left'></p>
                     <i className='iconfont icon-dianzan1'></i>
                     <span>为你精选的好职位</span>
+                    <p className='content_right'></p>
                 </div>
                 <div className='content_box'>
                     <ul className='content_box_ul'>
-                        <li className='content_box_ul_li'>
-                            <div className='content_box_ul_li_left'>
-                                <h3>Web前端开发</h3>
-                                <span>安徽麦田科技有限公司</span>
-                            </div>
-                            <div className='content_box_ul_li_right'>
-                                <span className='price'>4.5-6千/月</span>
-                                <span className='region'>合肥-政务区</span>
-                            </div>
-                        </li>
+                        {
+                            this.state.item.map(function (list, index) {
+                                return (
+                                    <li className='content_box_ul_li'>
+                                        <div className='content_box_ul_li_left'>
+                                            <h3>{list.title}</h3>
+                                            <span>{list.company}</span>
+                                        </div>
+                                        <div className='content_box_ul_li_right'>
+                                            <span className='price'>{list.price}/月</span>
+                                            <span className='region'>{list.region}</span>
+                                        </div>
+                                    </li>
+                                )
+                            })
+                        }
+                        
                     </ul>
+                    <div className='more'>更多职位</div>
+
                 </div>
             </div>
         )
