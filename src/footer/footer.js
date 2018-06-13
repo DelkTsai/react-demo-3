@@ -7,12 +7,21 @@ class Footer extends React.Component {
             <div className="footer">
                 <Link to="/">
                     <i className='iconfont icon-qingdan'></i>
-                    <div>清单</div>
+                    <div>首页</div>
                 </Link>
-                <Link to="/complete">
+                <Link to="/news">
                     <span className='iconfont icon-daibanrenwu'></span>
                     <div>完成</div>
                 </Link>
+                <Link to="/resume">
+                    <span className='iconfont icon-daibanrenwu'></span>
+                    <div>简历</div>
+                </Link>
+                <Link to="/my">
+                    <span className='iconfont icon-daibanrenwu'></span>
+                    <div>我的</div>
+                </Link>
+                
             </div>
         );
     }

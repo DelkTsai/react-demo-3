@@ -1,5 +1,7 @@
 import React from 'react';
 import home from './home/home';
+import styles from './styles/styles.css'
+import iconfont from './iconfont/iconfont.css'
 
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 
